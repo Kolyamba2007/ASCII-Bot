@@ -1,11 +1,12 @@
 import discord
 from discord.ext import commands
+from config import settings
 import requests
 from io import BytesIO
 
 intents = discord.Intents(messages=True)
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix = settings['prefix'], intents = intents)
 
 @bot.event
 async def on_ready():
@@ -19,4 +20,4 @@ async def ConvertToASCII(ctx, content):
     
     await ctx.send(file = discord.File(BytesIO(r.content), 'ASCII.txt'))
 
-bot.run('OTE3MDk2NjgwNDcyNTk2NTEw.Yazu1w.XQuPPn0bde01rJo5TO09ZC3CCU8')
+bot.run(settings['token'])
